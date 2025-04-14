@@ -1,7 +1,6 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Modal from '$lib/components/Modal.svelte';
-	import { fn } from '@storybook/test';
 
 	const { Story } = defineMeta({
 		title: 'Common/Modal',
