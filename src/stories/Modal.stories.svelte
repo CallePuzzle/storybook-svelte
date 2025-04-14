@@ -1,32 +1,21 @@
 <script module>
-	// import '../app.css';
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Modal from '$lib/components/Modal.svelte';
 	import { fn } from '@storybook/test';
 
-	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
-		title: 'Modal',
+		title: 'Common/Modal',
 		component: Modal,
-		tags: ['autodocs'],
-		argTypes: {
-			backgroundColor: { control: 'color' },
-			size: {
-				control: { type: 'select' },
-				options: ['small', 'medium', 'large']
-			}
-		},
-		args: {
-			onClick: fn()
-		}
+		tags: ['autodocs']
 	});
 </script>
 
-<!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Primary" args={{ primary: true, label: 'Button' }} />
+{#snippet children()}
+	<ul>
+		<li>option 1</li>
+	</ul>
+{/snippet}
 
-<Story name="Secondary" args={{ label: 'Button' }} />
-
-<Story name="Large" args={{ size: 'large', label: 'Button' }} />
-
-<Story name="Small" args={{ size: 'small', label: 'Button' }} />
+<Story name="Outside" args={{ title: 'Close outside', children }} />
+<Story name="Button" args={{ type: 'button', title: 'Close Button', children }} />
+<Story name="X" args={{ type: 'X', title: 'Close X', children }} />
