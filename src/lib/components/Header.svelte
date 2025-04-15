@@ -4,6 +4,7 @@
 
 	import Menu from '@lucide/svelte/icons/menu';
 	import NavBarList from '$lib/components/NavBarList.svelte';
+	import NavBarEnd from '$lib/components/NavBarEnd.svelte';
 
 	export interface Props {
 		title: string;
@@ -24,12 +25,11 @@
 					<Menu />
 				</label>
 			</div>
-			<div class="mx-2 flex-1 px-2">{title}</div>
-			<nav class="hidden flex-none lg:block">
-				<ul class="">
-					<NavBarList type="horizontal" {routes} />
-				</ul>
+			<div class="navbar-start mx-2 px-2">{title}</div>
+			<nav class="navbar-center hidden lg:block">
+				<NavBarList type="horizontal" {routes} />
 			</nav>
+			<NavBarEnd />
 		</div>
 		<!-- Page content here -->
 		{@render children()}
