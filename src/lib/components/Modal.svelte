@@ -38,14 +38,14 @@
 			<div class="modal-action">
 				<form method="dialog">
 					<!-- if there is a button in form, it will close the modal -->
-					<button class="btn">{m.close()}</button>
+					<button class="btn">{m.common_close()}</button>
 				</form>
 			</div>
 		{/if}
 	</div>
 	{#if type == 'outside'}
 		<form method="dialog" class="modal-backdrop">
-			<button>{m.close()}</button>
+			<button>{m.common_close()}</button>
 		</form>
 	{/if}
 </dialog>

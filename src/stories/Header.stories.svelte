@@ -1,6 +1,7 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Header from '$lib/components/Header.svelte';
+	import { routes } from '$lib/routes';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
@@ -21,4 +22,4 @@
 	</ul>
 {/snippet}
 
-<Story name="standard" args={{ title: 'NavNar Title', children }} />
+<Story name="standard" args={{ title: 'NavNar Title', routes, children }} />
