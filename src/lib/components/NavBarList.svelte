@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Routes, Route } from '$lib/routes';
 
+	import Link from '$lib/components/Link.svelte';
+
 	export interface Props {
 		type: 'horizontal' | 'drawer';
 		routes: Routes;
@@ -23,6 +25,6 @@
 
 <ul class={getClass()}>
 	{#each routesArray as route (route.url)}
-		<li><a href={route.url}>{route.name}</a></li>
+		<li><Link {route} /></li>
 	{/each}
 </ul>

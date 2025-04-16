@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Search from '@lucide/svelte/icons/search';
 	import BellRing from '@lucide/svelte/icons/bell-ring';
+	import Link from '$lib/components/Link.svelte';
+	import { routes } from '$lib/routes';
 
 	export interface Props {
 		userIsLogged: boolean;
@@ -24,14 +26,14 @@
 		</button>
 	{/if}
 	{#if notification}
-		<button class="btn btn-ghost btn-circle">
+		<a href={routes.notifications.url} class="btn btn-ghost btn-circle">
 			<div class="indicator">
 				<BellRing />
 				{#if userIsLogged && userHasNotification}
 					<span class="badge badge-xs badge-primary indicator-item"></span>
 				{/if}
 			</div>
-		</button>
+		</a>
 	{/if}
 
 	{#if userIsLogged}
@@ -44,18 +46,13 @@
 					/>
 				</div>
 			</div>
+			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 			<ul
 				tabindex="0"
 				class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
 			>
-				<li>
-					<a class="justify-between">
-						Profile
-						<span class="badge">New</span>
-					</a>
-				</li>
-				<li><a>Settings</a></li>
-				<li><a>Logout</a></li>
+				<li><Link route={routes.profile} /></li>
+				<li><Link route={routes.logout} /></li>
 			</ul>
 		</div>
 	{/if}
