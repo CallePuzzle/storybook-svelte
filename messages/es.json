@@ -1,4 +1,8 @@
 {
-	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from es!"
+	"common_close": "Cerrar",
+	"routes_home": "Inicio",
+	"routes_profile": "Perfil",
+	"routes_login": "Iniciar sesión",
+	"routes_logout": "Cerrar sesión",
+	"routes_notifications": "Notificaciones"
 }
