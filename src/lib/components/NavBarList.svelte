@@ -16,7 +16,9 @@
 		}
 	}
 
-	const routesArray: Route[] = Object.values(routes);
+	const routesArray: Route[] = Object.values(routes).filter(
+		(route: Route) => route.showInMenu === true
+	);
 </script>
 
 <ul class={getClass()}>

@@ -14,6 +14,23 @@
 			layout: 'fullscreen'
 		}
 	});
+
+	const testRoutes = {
+		site1: {
+			name: 'site1',
+			url: '/site1',
+			isProtected: false,
+			showInMenu: true
+		},
+		site2: {
+			name: 'site2',
+			url: '/site2',
+			isProtected: false,
+			showInMenu: true
+		}
+	};
+
+	const routesToShow = { ...routes, ...testRoutes };
 </script>
 
 {#snippet children()}
@@ -26,7 +43,7 @@
 	name="Full"
 	args={{
 		title: 'NavNar Title',
-		routes,
+		routes: routesToShow,
 		children,
 		userIsLogged: true,
 		userHasNotification: true,
