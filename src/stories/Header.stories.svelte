@@ -22,4 +22,15 @@
 	</ul>
 {/snippet}
 
-<Story name="standard" args={{ title: 'NavNar Title', routes, children }} />
+<Story
+	name="Full"
+	args={{
+		title: 'NavNar Title',
+		routes,
+		children,
+		userIsLogged: true,
+		userHasNotification: true,
+		notification: true,
+		searcher: true
+	}}
+/>

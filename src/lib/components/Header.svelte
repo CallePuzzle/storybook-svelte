@@ -4,15 +4,26 @@
 
 	import Menu from '@lucide/svelte/icons/menu';
 	import NavBarList from '$lib/components/NavBarList.svelte';
-	import NavBarEnd from '$lib/components/NavBarEnd.svelte';
 
-	export interface Props {
+	import NavBarEnd from '$lib/components/NavBarEnd.svelte';
+	import { type Props as NavBarEndProps } from '$lib/components/NavBarEnd.svelte';
+
+	export interface Props extends NavBarEndProps {
 		title: string;
 		routes: Routes;
 		children: Snippet;
 	}
 
-	let { title, routes, children }: Props = $props();
+	let {
+		title,
+		routes,
+		children,
+		// NavBarEndProps
+		userIsLogged = false,
+		userHasNotification = false,
+		notification = false,
+		searcher = false
+	}: Props = $props();
 </script>
 
 <div class="drawer">
@@ -29,7 +40,7 @@
 			<nav class="navbar-center hidden lg:block">
 				<NavBarList type="horizontal" {routes} />
 			</nav>
-			<NavBarEnd />
+			<NavBarEnd {userIsLogged} {userHasNotification} {notification} {searcher} />
 		</div>
 		<!-- Page content here -->
 		{@render children()}
