@@ -9,22 +9,24 @@
 		formData: SuperFormData<any>;
 		field: string;
 		type: string;
-		name: string;
-		description: string;
+		placeholder: string;
+		description?: string;
 	}
 
-	let { form, formData, field, type, name, description }: Props = $props();
+	let { form, formData, field, type, placeholder, description }: Props = $props();
 </script>
 
 <Field {form} name={field}>
 	<Control>
 		{#snippet children({ props })}
-			<Label>{name}</Label>
-			<input {...props} {type} bind:value={$formData[field]} />
+			<fieldset class="fieldset">
+				{#if description}
+					<legend class="fieldset-legend"><Description>{description}</Description></legend>
+				{/if}
+				<input class="input" {...props} {type} bind:value={$formData[field]} {placeholder} />
+				<p class="fieldset-label">Optional</p>
+			</fieldset>
 		{/snippet}
 	</Control>
-	{#if description}
-		<Description>{description}</Description>
-	{/if}
 	<FieldErrors />
 </Field>

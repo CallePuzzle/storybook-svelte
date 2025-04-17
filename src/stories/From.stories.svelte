@@ -24,7 +24,9 @@
 	});
 
 	const schema = z.object({
-		email: z.string().email('Please enter a valid email.').describe('Company email is preferred')
+		email: z.string().email('Please enter a valid email.').describe('Company email is preferred'),
+		otherfield: z.string(),
+		optionalString: z.string().optional()
 	});
 
 	const formValidated = defaults({ email: 'pepe@pepe.es' }, zod(schema));
