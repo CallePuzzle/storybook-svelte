@@ -4,5 +4,8 @@
 	"routes_profile": "Profile",
 	"routes_login": "Login",
 	"routes_logout": "Logout",
-	"routes_notifications": "Notifications"
+	"routes_notifications": "Notifications",
+	"form_required": "Required",
+	"form_optional": "Optional",
+	"form_email": "Email"
 }

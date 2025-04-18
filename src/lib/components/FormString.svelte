@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Control, Field, FieldErrors, Label, Description } from 'formsnap';
+	import { Control, Field, FieldErrors, Description } from 'formsnap';
+	import { m } from '$lib/paraglide/messages.js';
 	import type { SuperForm } from 'sveltekit-superforms';
 	import type { SuperFormData } from 'sveltekit-superforms/client';
 
@@ -11,9 +12,10 @@
 		type: string;
 		placeholder: string;
 		description?: string;
+		required?: boolean;
 	}
 
-	let { form, formData, field, type, placeholder, description }: Props = $props();
+	let { form, formData, field, type, placeholder, description, required = false }: Props = $props();
 </script>
 
 <Field {form} name={field}>
@@ -23,8 +25,19 @@
 				{#if description}
 					<legend class="fieldset-legend"><Description>{description}</Description></legend>
 				{/if}
-				<input class="input" {...props} {type} bind:value={$formData[field]} {placeholder} />
-				<p class="fieldset-label">Optional</p>
+				<input
+					class="input"
+					{...props}
+					{type}
+					bind:value={$formData[field]}
+					{placeholder}
+					{required}
+				/>
+				{#if required}
+					<p class="fieldset-label">{m.form_required()}</p>
+				{:else}
+					<p class="fieldset-label">{m.form_optional()}</p>
+				{/if}
 			</fieldset>
 		{/snippet}
 	</Control>
