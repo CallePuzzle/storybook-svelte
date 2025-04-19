@@ -10,19 +10,32 @@
 
 	export type Props = {
 		formValidated: SuperValidated<Infer<LoginSchema>>;
+		debug: boolean;
 	};
 
-	let { formValidated }: Props = $props();
+	let { formValidated, debug = false }: Props = $props();
+
+	const uid = $props.id();
 
 	const form = superForm(formValidated, {
+		id: uid,
 		validators: zodClient(loginSchema)
 	});
-	const { form: formData, enhance } = form;
+	const { form: formData, enhance, delayed } = form;
 
 	const fields = zodToFieldsJsonSchema(loginSchema);
 </script>
 
 <form use:enhance class="mx-auto flex max-w-md flex-col" method="POST">
 	<FormFields {form} {formData} {fields} />
+	<div class="my-2 flex justify-center">
+		{#if $delayed}
+			<span class="loading loading-dots loading-lg"></span>
+		{:else}
+			<button class="btn btn-accent">Enviar</button>
+		{/if}
+	</div>
 </form>
-<SuperDebug data={$formData} />
+{#if debug}
+	<SuperDebug data={$formData} />
+{/if}
