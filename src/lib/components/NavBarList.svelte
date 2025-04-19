@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { Routes, Route } from '$lib/routes';
+	import type { Routes, Route } from '$lib/routes.js';
 
 	import Link from '$lib/components/Link.svelte';
 
-	export interface Props {
+	export type Props = {
 		type: 'horizontal' | 'drawer';
 		routes: Routes;
-	}
+	};
 
 	let { type, routes }: Props = $props();
 

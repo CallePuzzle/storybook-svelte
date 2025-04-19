@@ -4,7 +4,7 @@
 	import type { SuperForm } from 'sveltekit-superforms';
 	import type { SuperFormData } from 'sveltekit-superforms/client';
 
-	export interface Props {
+	export type Props = {
 		// @ts-expect-error "because this component is generic and I don't know that form can be"
 		form: SuperForm<any, any>;
 		formData: SuperFormData<any>;
@@ -13,7 +13,7 @@
 		placeholder: string;
 		description?: string;
 		required?: boolean;
-	}
+	};
 
 	let { form, formData, field, type, placeholder, description, required = false }: Props = $props();
 </script>

@@ -2,13 +2,13 @@
 	import FormString from '$lib/components/FormString.svelte';
 	import type { SuperForm } from 'sveltekit-superforms';
 	import type { SuperFormData } from 'sveltekit-superforms/client';
-	import type { Fields } from '$lib/schemas/utils.ts';
+	import type { Fields } from '$lib/schemas/utils.js';
 
-	export interface Props {
+	export type Props = {
 		form: SuperForm<any, any>;
 		formData: SuperFormData<any>;
 		fields: Fields;
-	}
+	};
 
 	let { form, formData, fields }: Props = $props();
 </script>

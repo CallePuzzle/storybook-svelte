@@ -1,8 +1,7 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import FormLogin from '$lib/components/FormLogin.svelte';
-
-	import { z } from 'zod';
+	import { loginSchema } from '$lib/schemas/login.js';
 	import { defaults } from 'sveltekit-superforms/client';
 	import { zod } from 'sveltekit-superforms/adapters';
 
@@ -23,19 +22,12 @@
 		}
 	});
 
-	const schema = z.object({
-		email: z.string().email('Please enter a valid email.').describe('Company email is preferred')
-		// otherfield: z.string(),
-		// optionalString: z.string().optional()
-	});
-
-	const formValidated = defaults({ email: 'pepe@pepe.es' }, zod(schema));
+	const formValidated = defaults({ email: 'pepe@pepe.es' }, zod(loginSchema));
 </script>
 
 <Story
 	name="Generic"
 	args={{
-		formValidated,
-		schema
+		formValidated
 	}}
 />

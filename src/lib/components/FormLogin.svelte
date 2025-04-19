@@ -2,15 +2,15 @@
 	import { superForm } from 'sveltekit-superforms/client';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { type SuperValidated, type Infer } from 'sveltekit-superforms';
-	import { loginSchema, type LoginSchema } from '$lib/schemas/login';
+	import { loginSchema, type LoginSchema } from '$lib/schemas/login.js';
 	import SuperDebug from 'sveltekit-superforms';
 
 	import FormFields from '$lib/components/FormFields.svelte';
-	import { zodToFieldsJsonSchema } from '$lib/schemas/utils';
+	import { zodToFieldsJsonSchema } from '$lib/schemas/utils.js';
 
-	export interface Props {
+	export type Props = {
 		formValidated: SuperValidated<Infer<LoginSchema>>;
-	}
+	};
 
 	let { formValidated }: Props = $props();
 
