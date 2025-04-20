@@ -10,7 +10,7 @@
 
 	export type Props = {
 		formValidated: SuperValidated<Infer<LoginSchema>>;
-		debug: boolean;
+		debug?: boolean;
 	};
 
 	let { formValidated, debug = false }: Props = $props();

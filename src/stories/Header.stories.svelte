@@ -45,36 +45,34 @@
 	const formValidated = defaults({ email: 'pepe@pepe.es' }, zod(loginSchema));
 </script>
 
-{#snippet children()}
-	<ul>
-		<li>option 1</li>
-	</ul>
-{/snippet}
+<Story name="Full">
+	<Header
+		title="NavNar Title"
+		routes={routesToShow}
+		{formValidated}
+		userIsLogged={true}
+		userHasNotification={true}
+		notification={true}
+		searcher={true}
+	>
+		<ul>
+			<li>option 1</li>
+		</ul>
+	</Header>
+</Story>
 
-<Story
-	name="Full"
-	args={{
-		title: 'NavNar Title',
-		routes: routesToShow,
-		children,
-		userIsLogged: true,
-		userHasNotification: true,
-		notification: true,
-		searcher: true,
-		formValidated
-	}}
-/>
-
-<Story
-	name="User not logged"
-	args={{
-		title: 'NavNar Title',
-		routes: routesToShow,
-		children,
-		userIsLogged: false,
-		userHasNotification: true,
-		notification: true,
-		searcher: true,
-		formValidated
-	}}
-/>
+<Story name="User not logged">
+	<Header
+		title="NavNar Title"
+		routes={routesToShow}
+		{formValidated}
+		userIsLogged={true}
+		userHasNotification={true}
+		notification={true}
+		searcher={true}
+	>
+		<ul>
+			<li>option 1</li>
+		</ul>
+	</Header>
+</Story>
