@@ -2,20 +2,24 @@
 	import Search from '@lucide/svelte/icons/search';
 	import BellRing from '@lucide/svelte/icons/bell-ring';
 	import Link from '$lib/components/Link.svelte';
-	import { routes } from '$lib/routes';
+	import { routes } from '$lib/routes.js';
+	import Modal from '$lib/components/Modal.svelte';
+	import FormLogin from '$lib/components/FormLogin.svelte';
+	import type { Props as FormLoginProps } from '$lib/components/FormLogin.svelte';
 
-	export interface Props {
+	export type Props = {
 		userIsLogged: boolean;
 		userHasNotification: boolean;
 		notification: boolean;
 		searcher: boolean;
-	}
+	} & FormLoginProps;
 
 	let {
 		userIsLogged = false,
 		userHasNotification = false,
 		notification = false,
-		searcher = false
+		searcher = false,
+		formValidated
 	}: Props = $props();
 </script>
 
@@ -36,8 +40,8 @@
 		</a>
 	{/if}
 
-	{#if userIsLogged}
-		<div class="dropdown dropdown-end">
+	<div class="dropdown dropdown-end">
+		{#if userIsLogged}
 			<div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
 				<div class="w-10 rounded-full">
 					<img
@@ -54,6 +58,10 @@
 				<li><Link route={routes.profile} /></li>
 				<li><Link route={routes.logout} /></li>
 			</ul>
-		</div>
-	{/if}
+		{:else}
+			<Modal title="Login">
+				<FormLogin {formValidated} />
+			</Modal>
+		{/if}
+	</div>
 </div>

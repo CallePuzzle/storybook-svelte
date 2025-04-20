@@ -4,5 +4,10 @@
 	"routes_profile": "Perfil",
 	"routes_login": "Iniciar sesión",
 	"routes_logout": "Cerrar sesión",
-	"routes_notifications": "Notificaciones"
+	"routes_notifications": "Notificaciones",
+	"form_required": "Obligatorio",
+	"form_optional": "Opcional",
+	"form_email": "Email",
+	"schema_login_email_error": "Por favor, ingrese una dirección de correo electrónico válida.",
+	"schema_login_email_describe": "Por favor, ingrese una dirección de correo electrónico válida."
 }

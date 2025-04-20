@@ -9,12 +9,18 @@
 	});
 </script>
 
-{#snippet children()}
-	<ul>
-		<li>option 1</li>
-	</ul>
-{/snippet}
-
-<Story name="Outside" args={{ title: 'Close outside', children }} />
-<Story name="Button" args={{ type: 'button', title: 'Close Button', children }} />
-<Story name="X" args={{ type: 'X', title: 'Close X', children }} />
+<Story name="Outside">
+	<Modal title="Close outside">
+		<p>Content</p>
+	</Modal>
+</Story>
+<Story name="Button">
+	<Modal title="Close Button" type="button">
+		<p>Content</p>
+	</Modal>
+</Story>
+<Story name="X">
+	<Modal title="Close X" type="X">
+		<p>Content</p>
+	</Modal>
+</Story>

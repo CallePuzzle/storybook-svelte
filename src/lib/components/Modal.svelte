@@ -3,11 +3,11 @@
 	import { onMount } from 'svelte';
 	import { m } from '$lib/paraglide/messages.js';
 
-	export interface Props {
+	export type Props = {
 		type?: 'button' | 'X' | 'outside';
 		title: string;
 		children: Snippet;
-	}
+	};
 
 	let { type = 'outside', title, children }: Props = $props();
 	let modal: HTMLDialogElement;

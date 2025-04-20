@@ -1,7 +1,10 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Header from '$lib/components/Header.svelte';
-	import { routes } from '$lib/routes';
+	import { loginSchema } from '$lib/schemas/login.js';
+	import { routes } from '$lib/routes.js';
+	import { defaults } from 'sveltekit-superforms/client';
+	import { zod } from 'sveltekit-superforms/adapters';
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
@@ -10,8 +13,15 @@
 		// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
 		tags: ['autodocs'],
 		parameters: {
-			// More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-			layout: 'fullscreen'
+			sveltekit_experimental: {
+				forms: {
+					enhance: () => {},
+					applyAction: () => {}
+				},
+				stores: {
+					page: {}
+				}
+			}
 		}
 	});
 
@@ -31,23 +41,38 @@
 	};
 
 	const routesToShow = { ...routes, ...testRoutes };
+
+	const formValidated = defaults({ email: 'pepe@pepe.es' }, zod(loginSchema));
 </script>
 
-{#snippet children()}
-	<ul>
-		<li>option 1</li>
-	</ul>
-{/snippet}
+<Story name="Full">
+	<Header
+		title="NavNar Title"
+		routes={routesToShow}
+		{formValidated}
+		userIsLogged={true}
+		userHasNotification={true}
+		notification={true}
+		searcher={true}
+	>
+		<ul>
+			<li>option 1</li>
+		</ul>
+	</Header>
+</Story>
 
-<Story
-	name="Full"
-	args={{
-		title: 'NavNar Title',
-		routes: routesToShow,
-		children,
-		userIsLogged: true,
-		userHasNotification: true,
-		notification: true,
-		searcher: true
-	}}
-/>
+<Story name="User not logged">
+	<Header
+		title="NavNar Title"
+		routes={routesToShow}
+		{formValidated}
+		userIsLogged={true}
+		userHasNotification={true}
+		notification={true}
+		searcher={true}
+	>
+		<ul>
+			<li>option 1</li>
+		</ul>
+	</Header>
+</Story>
