@@ -8,10 +8,10 @@
 	import type { Props as FormLoginProps } from '$lib/components/FormLogin.svelte';
 
 	export type Props = {
-		userIsLogged: boolean;
-		userHasNotification: boolean;
-		notification: boolean;
-		searcher: boolean;
+		userIsLogged?: boolean;
+		userHasNotification?: boolean;
+		notification?: boolean;
+		searcher?: boolean;
 	} & FormLoginProps;
 
 	let {
