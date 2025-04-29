@@ -30,7 +30,7 @@
 		</button>
 	{/if}
 	{#if notification}
-		<a href={routes.notifications.url} class="btn btn-ghost btn-circle">
+		<a href={routes.notifications.url as string} class="btn btn-ghost btn-circle">
 			<div class="indicator">
 				<BellRing />
 				{#if userIsLogged && userHasNotification}
