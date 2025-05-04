@@ -28,7 +28,7 @@
 	const fields = zodToFieldsJsonSchema(loginSchema);
 </script>
 
-<form use:enhance class="mx-auto flex max-w-xs flex-col" method="POST">
+<form use:enhance class="mx-auto flex max-w-xs flex-col" method="POST" action="/login?/signin">
 	<FormFields {form} {formData} {fields} />
 	<div class="my-2 flex justify-center">
 		{#if $delayed}
