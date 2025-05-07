@@ -6,6 +6,7 @@
 	import SuperDebug from 'sveltekit-superforms';
 	import { m } from '$lib/paraglide/messages.js';
 	import Inbox from '@lucide/svelte/icons/inbox';
+	import { routes } from '$lib/routes.js';
 
 	import FormFields from '$lib/components/FormFields.svelte';
 	import { zodToFieldsJsonSchema } from '$lib/schemas/utils.js';
@@ -28,7 +29,12 @@
 	const fields = zodToFieldsJsonSchema(loginSchema);
 </script>
 
-<form use:enhance class="mx-auto flex max-w-xs flex-col" method="POST" action="/login?/signin">
+<form
+	use:enhance
+	class="mx-auto flex max-w-xs flex-col"
+	method="POST"
+	action={routes.login.url + '?/signin'}
+>
 	<FormFields {form} {formData} {fields} />
 	<div class="my-2 flex justify-center">
 		{#if $delayed}

@@ -28,19 +28,19 @@ const routes: Routes = {
 	},
 	login: {
 		name: m.routes_login(),
-		url: '/user/login',
+		url: '/auth/login',
 		isProtected: true,
 		showInMenu: false
 	},
 	logout: {
 		name: m.routes_logout(),
-		url: '/user/logout',
+		url: '/auth/logout',
 		isProtected: true,
 		showInMenu: false
 	},
 	notifications: {
 		name: m.routes_notifications(),
-		url: '/notifications',
+		url: '/user/notifications',
 		isProtected: true,
 		showInMenu: false
 	}
