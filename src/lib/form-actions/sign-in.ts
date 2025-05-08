@@ -1,9 +1,15 @@
-import type { RequestEvent } from './$types';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { loginSchema } from '$lib/schemas/login.js';
 
-export default async (event: RequestEvent, createUser: boolean, redirectTo: string) => {
+import type { RequestEvent } from '@sveltejs/kit';
+import type { AuthOtpResponse } from '@supabase/supabase-js';
+
+export default async (
+	event: RequestEvent,
+	createUser: boolean,
+	redirectTo: string
+): Promise<AuthOtpResponse> => {
 	const supabase = event.locals.supabase;
 	const form = await superValidate(event.request, zod(loginSchema));
 
