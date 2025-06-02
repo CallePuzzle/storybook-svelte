@@ -22,8 +22,7 @@
 		userIsLogged = false,
 		userHasNotification = false,
 		notification = false,
-		searcher = false,
-		formValidated
+		searcher = false
 	}: Props = $props();
 </script>
 
@@ -41,7 +40,7 @@
 			<nav class="navbar-center hidden lg:block">
 				<NavBarList type="horizontal" {routes} />
 			</nav>
-			<NavBarEnd {userIsLogged} {userHasNotification} {notification} {searcher} {formValidated} />
+			<NavBarEnd {userIsLogged} {userHasNotification} {notification} {searcher} />
 		</div>
 		<!-- Page content here -->
 		{@render children()}

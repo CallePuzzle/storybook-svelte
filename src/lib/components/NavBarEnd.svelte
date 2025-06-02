@@ -18,9 +18,14 @@
 		userIsLogged = false,
 		userHasNotification = false,
 		notification = false,
-		searcher = false,
-		formValidated
+		searcher = false
 	}: Props = $props();
+
+	let modal = $state();
+
+	function afterCancelCallback() {
+		modal.close();
+	}
 </script>
 
 <div class="navbar-end">
@@ -59,8 +64,8 @@
 				<li><Link route={routes.logout} /></li>
 			</ul>
 		{:else}
-			<Modal title="Login">
-				<FormLogin {formValidated} />
+			<Modal title="Login" bind:this={modal}>
+				<FormLogin {afterCancelCallback} />
 			</Modal>
 		{/if}
 	</div>

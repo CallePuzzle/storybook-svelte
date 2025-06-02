@@ -1,40 +1,46 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms/client';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { type SuperValidated, type Infer } from 'sveltekit-superforms';
-	import { loginSchema, type LoginSchema } from '$lib/schemas/login.js';
+	import { loginSchema } from '$lib/schemas/login.js';
 	import SuperDebug from 'sveltekit-superforms';
 	import { m } from '$lib/paraglide/messages.js';
 	import Inbox from '@lucide/svelte/icons/inbox';
-	import { routes } from '$lib/routes.js';
+	import { defaults } from 'sveltekit-superforms/client';
+	import { zod } from 'sveltekit-superforms/adapters';
+	import { signIn } from '$lib/auth-client';
 
 	import FormFields from '$lib/components/FormFields.svelte';
 	import { zodToFieldsJsonSchema } from '$lib/schemas/utils.js';
 
 	export type Props = {
-		formValidated: SuperValidated<Infer<LoginSchema>>;
 		debug?: boolean;
+		afterCancelCallback?: () => void;
 	};
 
-	let { formValidated, debug = false }: Props = $props();
+	let { debug = false, afterCancelCallback = () => {} }: Props = $props();
 
 	const uid = $props.id();
 
+	const formValidated = defaults({ email: '' }, zod(loginSchema));
+
 	const form = superForm(formValidated, {
 		id: uid,
-		validators: zodClient(loginSchema)
+		validators: zodClient(loginSchema),
+		dataType: 'json',
+		async onSubmit({ cancel }) {
+			await signIn.magicLink({
+				email: $formData.email
+			});
+			cancel();
+			afterCancelCallback();
+		}
 	});
 	const { form: formData, enhance, delayed } = form;
 
 	const fields = zodToFieldsJsonSchema(loginSchema);
 </script>
 
-<form
-	use:enhance
-	class="mx-auto flex max-w-xs flex-col"
-	method="POST"
-	action={routes.login.url + '?/signin'}
->
+<form use:enhance class="mx-auto flex max-w-xs flex-col" method="POST">
 	<FormFields {form} {formData} {fields} />
 	<div class="my-2 flex justify-center">
 		{#if $delayed}

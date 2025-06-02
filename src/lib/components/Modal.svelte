@@ -21,6 +21,10 @@
 	onMount(() => {
 		modal = document.getElementById('modal-' + uid) as HTMLDialogElement;
 	});
+
+	export function close() {
+		modal.close();
+	}
 </script>
 
 <button class="btn" onclick={showModal}>{title}</button>
