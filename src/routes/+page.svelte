@@ -7,7 +7,7 @@
 	{#if $session.data}
 		<div>
 			<p>
-				{$session?.data?.user.name}
+				{$session?.data?.user.email}
 			</p>
 			<button
 				on:click={async () => {
@@ -20,9 +20,8 @@
 	{:else}
 		<button
 			on:click={async () => {
-				await authClient.signIn.email({
-					email: 'test@example.com',
-					password: 'password1234'
+				await authClient.signIn.magicLink({
+					email: 'cesarmcristobal@gmail.com'
 				});
 			}}
 		>
