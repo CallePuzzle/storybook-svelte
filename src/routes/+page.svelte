@@ -1,9 +1,32 @@
+<script lang="ts">
+	import { authClient } from '$lib/auth-client';
+	const session = authClient.useSession();
+</script>
+
 <div>
-	<nav>
-		<ul>
-			<li><a href="/demo">Demo</a></li>
-			<li><a href="/forms">Forms</a></li>
-			<li><a href="/modal">Modal</a></li>
-		</ul>
-	</nav>
+	{#if $session.data}
+		<div>
+			<p>
+				{$session?.data?.user.name}
+			</p>
+			<button
+				on:click={async () => {
+					await authClient.signOut();
+				}}
+			>
+				Sign Out
+			</button>
+		</div>
+	{:else}
+		<button
+			on:click={async () => {
+				await authClient.signIn.email({
+					email: 'test@example.com',
+					password: 'password1234'
+				});
+			}}
+		>
+			Continue with email
+		</button>
+	{/if}
 </div>
