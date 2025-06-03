@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-import { SMTP_HOST, SMPT_AUTH_USER, SMPT_AUTH_PASS } from '$env/static/private';
+import { SMTP_HOST, SMPT_AUTH_USER, SMPT_AUTH_PASS, SMPT_SENDER } from '$env/static/private';
 
 const transporter = nodemailer.createTransport({
 	host: SMTP_HOST,
@@ -14,15 +14,14 @@ const transporter = nodemailer.createTransport({
 
 const sender = async (to: string, subject: string, text: string) => {
 	try {
-		// const sent = await transporter.sendMail({
-		// 	from: SMPT_AUTH_USER,
-		// 	to,
-		// 	subject,
-		// 	text
-		// });
-		// console.log(sent);
+		const sent = await transporter.sendMail({
+			from: SMPT_SENDER,
+			to,
+			subject,
+			text
+		});
+		console.log(sent);
 		console.log(to, subject, text);
-		await new Promise((resolve) => setTimeout(resolve, 2000));
 	} catch (error) {
 		console.error('Error sending email:', error);
 	}

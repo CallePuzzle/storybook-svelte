@@ -4,6 +4,7 @@
 	import Link from '$lib/components/Link.svelte';
 	import { routes } from '$lib/routes.js';
 	import Modal from '$lib/components/Modal.svelte';
+	import ModalType from '$lib/components/Modal.svelte';
 	import FormLogin from '$lib/components/FormLogin.svelte';
 	import type { Props as FormLoginProps } from '$lib/components/FormLogin.svelte';
 
@@ -21,10 +22,10 @@
 		searcher = false
 	}: Props = $props();
 
-	let modal = $state();
+	let modal = $state<ModalType | null>(null);
 
 	function afterCancelCallback() {
-		modal.close();
+		modal?.close();
 	}
 </script>
 
