@@ -6,6 +6,7 @@
 	import Modal from '$lib/components/Modal.svelte';
 	import ModalType from '$lib/components/Modal.svelte';
 	import FormLogin from '$lib/components/FormLogin.svelte';
+	import { authClient } from '$lib/auth-client';
 	import type { Props as FormLoginProps } from '$lib/components/FormLogin.svelte';
 
 	export type Props = {
@@ -62,7 +63,15 @@
 				class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
 			>
 				<li><Link route={routes.profile} /></li>
-				<li><Link route={routes.logout} /></li>
+				<li>
+					<button
+						onclick={async () => {
+							await authClient.signOut();
+						}}
+					>
+						Sign Out
+					</button>
+				</li>
 			</ul>
 		{:else}
 			<Modal title="Login" bind:this={modal}>

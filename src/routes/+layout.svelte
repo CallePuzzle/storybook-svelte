@@ -10,8 +10,6 @@
 	import type { Snippet } from 'svelte';
 
 	let { children, data }: { children: Snippet; data: PageData } = $props();
-
-	console.log(data.session);
 </script>
 
 <Header title="NavNar Title" {routes} userIsLogged={$userData.data ? true : false}>
