@@ -6,26 +6,22 @@
 	import Modal from '$lib/components/Modal.svelte';
 	import ModalType from '$lib/components/Modal.svelte';
 	import FormLogin from '$lib/components/FormLogin.svelte';
-	import { authClient } from '$lib/auth-client';
+	import { authClient, session } from '$lib/auth-client';
 	import type { Props as FormLoginProps } from '$lib/components/FormLogin.svelte';
 
 	export type Props = {
-		userIsLogged?: boolean;
 		userHasNotification?: boolean;
 		notification?: boolean;
 		searcher?: boolean;
 	} & FormLoginProps;
 
-	let {
-		userIsLogged = false,
-		userHasNotification = false,
-		notification = false,
-		searcher = false
-	}: Props = $props();
+	let { userHasNotification = false, notification = false, searcher = false }: Props = $props();
 
 	let modal = $state<ModalType | null>(null);
+	let userIsLogged = $state($session?.data ? true : false);
 
-	function afterCancelCallback() {
+	async function afterCancelCallback() {
+		await new Promise((resolve) => setTimeout(resolve, 2000));
 		modal?.close();
 	}
 </script>

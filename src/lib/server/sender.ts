@@ -13,18 +13,12 @@ const transporter = nodemailer.createTransport({
 });
 
 const sender = async (to: string, subject: string, text: string) => {
-	try {
-		const sent = await transporter.sendMail({
-			from: SMPT_SENDER,
-			to,
-			subject,
-			text
-		});
-		console.log(sent);
-		console.log(to, subject, text);
-	} catch (error) {
-		console.error('Error sending email:', error);
-	}
+	await transporter.sendMail({
+		from: SMPT_SENDER,
+		to,
+		subject,
+		text
+	});
 };
 
 export default sender;

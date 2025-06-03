@@ -19,6 +19,8 @@
 
 	let { debug = false, afterCancelCallback = () => {} }: Props = $props();
 
+	let message = $state<{ type: 'success' | 'error'; text: string } | null>(null);
+
 	const uid = $props.id();
 
 	const formValidated = defaults({ email: '' }, zod(loginSchema));
@@ -28,11 +30,22 @@
 		validators: zodClient(loginSchema),
 		dataType: 'json',
 		async onSubmit({ cancel }) {
-			await signIn.magicLink({
-				email: $formData.email
-			});
 			cancel();
-			afterCancelCallback();
+			try {
+				message = null;
+				const result = await signIn.magicLink({
+					email: $formData.email
+				});
+				console.log(result);
+				if (result.error) {
+					message = { type: 'error', text: result.error.status + ': ' + result.error.statusText };
+				} else {
+					message = { type: 'success', text: m.form_login_magic_link_sent() };
+					afterCancelCallback();
+				}
+			} catch (error) {
+				message = { type: 'error', text: 'An unexpected error occurred. Please try again.' };
+			}
 		}
 	});
 	const { form: formData, enhance, delayed } = form;
@@ -45,6 +58,10 @@
 	<div class="my-2 flex justify-center">
 		{#if $delayed}
 			<span class="loading loading-dots loading-lg"></span>
+		{:else if message}
+			<div class="alert {message.type === 'success' ? 'alert-success' : 'alert-error'} text-sm">
+				{message.text}
+			</div>
 		{:else}
 			<button class="btn btn-accent"><Inbox />{m.form_login_sign_in()}</button>
 		{/if}

@@ -12,7 +12,12 @@ export const auth = betterAuth({
 		magicLink({
 			sendMagicLink: async ({ email, token, url }, request) => {
 				console.log(request);
-				await sender(email, 'sign in', 'token: ' + token + ' -- url: ' + url);
+				try {
+					await sender(email, 'sign in', 'token: ' + token + ' -- url: ' + url);
+				} catch (error) {
+					console.error(error);
+					throw error;
+				}
 			}
 		})
 	]
