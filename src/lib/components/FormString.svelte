@@ -26,7 +26,7 @@
 					<legend class="fieldset-legend"><Description>{description}</Description></legend>
 				{/if}
 				<input
-					class="input"
+					class="input w-full"
 					{...props}
 					{type}
 					bind:value={$formData[field]}

@@ -26,21 +26,9 @@ const routes: Routes = {
 		isProtected: true,
 		showInMenu: false
 	},
-	login: {
-		name: m.routes_login(),
-		url: '/user/login',
-		isProtected: true,
-		showInMenu: false
-	},
-	logout: {
-		name: m.routes_logout(),
-		url: '/user/logout',
-		isProtected: true,
-		showInMenu: false
-	},
 	notifications: {
 		name: m.routes_notifications(),
-		url: '/notifications',
+		url: '/user/notifications',
 		isProtected: true,
 		showInMenu: false
 	}
