@@ -24,3 +24,14 @@ npx prisma migrate diff \
 
 turso db shell http://127.0.0.1:8080 < prisma/migrations/0001_initial.sql
 ```
+
+## Link library - local development
+
+```
+bun link
+
+bun link v1.2.15 (df017990)
+Success! Registered "storybook-svelte"
+```
+
+`bun link storybook-svelte`
