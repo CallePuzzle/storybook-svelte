@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Search from '@lucide/svelte/icons/search';
 	import BellRing from '@lucide/svelte/icons/bell-ring';
-	import Link from '$lib/components/Link.svelte';
-	import { routes } from '$lib/routes.js';
-	import Modal from '$lib/components/Modal.svelte';
-	import ModalType from '$lib/components/Modal.svelte';
-	import FormLogin from '$lib/components/FormLogin.svelte';
-	import { authClient, session } from '$lib/auth-client';
-	import type { Props as FormLoginProps } from '$lib/components/FormLogin.svelte';
+	import Link from './Link.svelte';
+	import { routes } from '../routes.js';
+	import Modal from './Modal.svelte';
+	import ModalType from './Modal.svelte';
+	import FormLogin from './FormLogin.svelte';
+	import { authClient, session } from '../auth-client';
+	import type { Props as FormLoginProps } from './FormLogin.svelte';
 
 	export type Props = {
 		userHasNotification?: boolean;

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { Routes } from '$lib/routes.js';
+	import type { Routes } from '../routes.js';
 
 	import Menu from '@lucide/svelte/icons/menu';
-	import NavBarList from '$lib/components/NavBarList.svelte';
+	import NavBarList from './NavBarList.svelte';
 
-	import NavBarEnd from '$lib/components/NavBarEnd.svelte';
-	import { type Props as NavBarEndProps } from '$lib/components/NavBarEnd.svelte';
+	import NavBarEnd from './NavBarEnd.svelte';
+	import { type Props as NavBarEndProps } from './NavBarEnd.svelte';
 
 	export type Props = {
 		title: string;

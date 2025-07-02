@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Route } from '$lib/routes.js';
+	import type { Route } from '../routes.js';
 	export type Props = {
 		route: Route;
 	};

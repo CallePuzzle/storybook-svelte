@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { onMount } from 'svelte';
-	import { m } from '$lib/paraglide/messages.js';
+	import { m } from '../paraglide/messages.js';
 
 	export type Props = {
 		type?: 'button' | 'X' | 'outside';

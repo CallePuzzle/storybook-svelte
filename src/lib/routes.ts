@@ -1,4 +1,4 @@
-import { m } from '$lib/paraglide/messages.js';
+import { m } from './paraglide/messages.js';
 
 type URL<T extends string = string> = T | ((id: string, ...params: string[]) => T);
 

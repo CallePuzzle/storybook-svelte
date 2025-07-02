@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Routes, Route } from '$lib/routes.js';
+	import type { Routes, Route } from '../routes.js';
 
-	import Link from '$lib/components/Link.svelte';
+	import Link from './Link.svelte';
 
 	export type Props = {
 		type: 'horizontal' | 'drawer';

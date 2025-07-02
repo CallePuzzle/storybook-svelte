@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Control, Field, FieldErrors, Description } from 'formsnap';
-	import { m } from '$lib/paraglide/messages.js';
+	import { m } from '../paraglide/messages.js';
 	import type { SuperForm } from 'sveltekit-superforms';
 	import type { SuperFormData } from 'sveltekit-superforms/client';
 
