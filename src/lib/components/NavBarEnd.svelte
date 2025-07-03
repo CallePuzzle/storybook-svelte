@@ -26,6 +26,7 @@
 	}: Props = $props();
 
 	let modal = $state<ModalType | null>(null);
+	console.log(session);
 	let userIsLogged = $state($session?.data ? true : false);
 
 	async function afterCancelCallback() {
