@@ -19,7 +19,8 @@
 		routes,
 		children,
 		// NavBarEndProps
-		userIsLogged = false,
+		session,
+		authClient,
 		userHasNotification = false,
 		notification = false,
 		searcher = false
@@ -40,7 +41,7 @@
 			<nav class="navbar-center hidden lg:block">
 				<NavBarList type="horizontal" {routes} />
 			</nav>
-			<NavBarEnd {userIsLogged} {userHasNotification} {notification} {searcher} />
+			<NavBarEnd {session} {authClient} {userHasNotification} {notification} {searcher} />
 		</div>
 		<!-- Page content here -->
 		{@render children()}

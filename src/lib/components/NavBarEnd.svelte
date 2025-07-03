@@ -6,16 +6,24 @@
 	import Modal from './Modal.svelte';
 	import ModalType from './Modal.svelte';
 	import FormLogin from './FormLogin.svelte';
-	import { authClient, session } from '../auth-client';
+	import type { AuthClient, Session } from '../auth-client';
 	import type { Props as FormLoginProps } from './FormLogin.svelte';
 
 	export type Props = {
+		session: Session;
+		authClient: AuthClient;
 		userHasNotification?: boolean;
 		notification?: boolean;
 		searcher?: boolean;
 	} & FormLoginProps;
 
-	let { userHasNotification = false, notification = false, searcher = false }: Props = $props();
+	let {
+		session,
+		authClient,
+		userHasNotification = false,
+		notification = false,
+		searcher = false
+	}: Props = $props();
 
 	let modal = $state<ModalType | null>(null);
 	let userIsLogged = $state($session?.data ? true : false);
