@@ -1,5 +1,5 @@
 import { betterAuth } from 'better-auth';
-import { magicLink } from 'better-auth/plugins';
+import { magicLink, organization, admin } from 'better-auth/plugins';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import type { PrismaClient } from '@prisma/client';
 
@@ -20,7 +20,9 @@ export function getAuth(db: PrismaClient) {
 						throw error;
 					}
 				}
-			})
+			}),
+			organization(),
+			admin()
 		]
 	});
 }
