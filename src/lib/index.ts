@@ -1,3 +1,3 @@
 export * from './components';
-export { routes } from './routes.js';
+export { routes, type Routes } from './routes.js';
 export { betterAuth } from './better-auth-handle.js';
