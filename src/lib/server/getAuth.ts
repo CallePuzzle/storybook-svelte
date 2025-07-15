@@ -1,13 +1,10 @@
 import { betterAuth } from 'better-auth';
 import { magicLink, organization, admin } from 'better-auth/plugins';
-import { prismaAdapter } from 'better-auth/adapters/prisma';
-import type { PrismaClient } from '@prisma/client';
+import type { BetterAuthOptions } from 'better-auth';
 
-export function getAuth(db: PrismaClient) {
+export function getAuth(database: BetterAuthOptions) {
 	return betterAuth({
-		database: prismaAdapter(db, {
-			provider: 'sqlite'
-		}),
+		database: database,
 		plugins: [
 			magicLink({
 				sendMagicLink: async ({ email, token, url }, request) => {
