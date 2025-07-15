@@ -8,3 +8,6 @@ export const authClient = createAuthClient({
 export const { signIn, signUp, useSession } = authClient;
 
 export const session = useSession();
+
+export type AuthClient = typeof authClient;
+export type Session = ReturnType<typeof useSession>;

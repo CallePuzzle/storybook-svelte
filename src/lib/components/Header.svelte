@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { Routes } from '$lib/routes.js';
+	import type { Routes } from '../routes.js';
 
 	import Menu from '@lucide/svelte/icons/menu';
-	import NavBarList from '$lib/components/NavBarList.svelte';
+	import NavBarList from './NavBarList.svelte';
 
-	import NavBarEnd from '$lib/components/NavBarEnd.svelte';
-	import { type Props as NavBarEndProps } from '$lib/components/NavBarEnd.svelte';
+	import NavBarEnd from './NavBarEnd.svelte';
+	import { type Props as NavBarEndProps } from './NavBarEnd.svelte';
 
 	export type Props = {
 		title: string;
@@ -19,7 +19,8 @@
 		routes,
 		children,
 		// NavBarEndProps
-		userIsLogged = false,
+		session,
+		authClient,
 		userHasNotification = false,
 		notification = false,
 		searcher = false
@@ -40,7 +41,7 @@
 			<nav class="navbar-center hidden lg:block">
 				<NavBarList type="horizontal" {routes} />
 			</nav>
-			<NavBarEnd {userIsLogged} {userHasNotification} {notification} {searcher} />
+			<NavBarEnd {session} {authClient} {userHasNotification} {notification} {searcher} />
 		</div>
 		<!-- Page content here -->
 		{@render children()}

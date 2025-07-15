@@ -1,8 +1,8 @@
 <script lang="ts">
-	import FormString from '$lib/components/FormString.svelte';
+	import FormString from './FormString.svelte';
 	import type { SuperForm } from 'sveltekit-superforms';
 	import type { SuperFormData } from 'sveltekit-superforms/client';
-	import type { Fields } from '$lib/schemas/utils.js';
+	import type { Fields } from '../schemas/utils.js';
 
 	export type Props = {
 		form: SuperForm<any, any>;

@@ -1,3 +1,3 @@
-import Header from './components/Header.svelte';
-
-export { Header };
+export * from './components';
+export { routes, type Routes } from './routes.js';
+export { betterAuth } from './better-auth-handle.js';

@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms/client';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { loginSchema } from '$lib/schemas/login.js';
+	import { loginSchema } from '../schemas/login.js';
 	import SuperDebug from 'sveltekit-superforms';
-	import { m } from '$lib/paraglide/messages.js';
+	import { m } from '../paraglide/messages.js';
 	import Inbox from '@lucide/svelte/icons/inbox';
 	import { defaults } from 'sveltekit-superforms/client';
 	import { zod } from 'sveltekit-superforms/adapters';
-	import { signIn } from '$lib/auth-client';
+	import { signIn } from '../auth-client';
 
-	import FormFields from '$lib/components/FormFields.svelte';
-	import { zodToFieldsJsonSchema } from '$lib/schemas/utils.js';
+	import FormFields from './FormFields.svelte';
+	import { zodToFieldsJsonSchema } from '../schemas/utils.js';
 
 	export type Props = {
 		debug?: boolean;

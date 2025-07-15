@@ -1,24 +1,32 @@
 <script lang="ts">
 	import Search from '@lucide/svelte/icons/search';
 	import BellRing from '@lucide/svelte/icons/bell-ring';
-	import Link from '$lib/components/Link.svelte';
-	import { routes } from '$lib/routes.js';
-	import Modal from '$lib/components/Modal.svelte';
-	import ModalType from '$lib/components/Modal.svelte';
-	import FormLogin from '$lib/components/FormLogin.svelte';
-	import { authClient, session } from '$lib/auth-client';
-	import type { Props as FormLoginProps } from '$lib/components/FormLogin.svelte';
+	import Link from './Link.svelte';
+	import { routes } from '../routes.js';
+	import Modal from './Modal.svelte';
+	import ModalType from './Modal.svelte';
+	import FormLogin from './FormLogin.svelte';
+	import type { AuthClient, Session } from '../auth-client';
+	import type { Props as FormLoginProps } from './FormLogin.svelte';
 
 	export type Props = {
+		session: Session;
+		authClient: AuthClient;
 		userHasNotification?: boolean;
 		notification?: boolean;
 		searcher?: boolean;
 	} & FormLoginProps;
 
-	let { userHasNotification = false, notification = false, searcher = false }: Props = $props();
+	let {
+		session,
+		authClient,
+		userHasNotification = false,
+		notification = false,
+		searcher = false
+	}: Props = $props();
 
 	let modal = $state<ModalType | null>(null);
-	let userIsLogged = $state($session?.data ? true : false);
+	let userIsLogged = $derived<boolean>($session?.data ? true : false);
 
 	async function afterCancelCallback() {
 		await new Promise((resolve) => setTimeout(resolve, 2000));
