@@ -10,29 +10,7 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: "@storybook/react-vite",
-    options: {
-      strictMode: true,
-    },
-  },
-  typescript: {
-    reactDocgen: "react-docgen-typescript",
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
-    },
-  },
-  viteFinal: async (config) => {
-    // Ensure React is properly aliased
-    config.resolve = config.resolve || {};
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      react: require.resolve("react"),
-      "react-dom": require.resolve("react-dom"),
-    };
-
-    return config;
+    options: {},
   },
 };
-
 export default config;

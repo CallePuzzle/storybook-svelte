@@ -27,7 +27,7 @@ export default defineConfig({
           }),
         ],
         test: {
-          name: "storybook",
+          name: "storybook-react",
           browser: {
             enabled: true,
             headless: true,
@@ -39,6 +39,30 @@ export default defineConfig({
             ],
           },
           setupFiles: [".storybook-react/vitest.setup.ts"],
+        },
+      },
+      {
+        extends: true,
+        plugins: [
+          // The plugin will run tests for the stories defined in your Storybook config
+          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
+          storybookTest({
+            configDir: path.join(dirname, ".storybook-svelte"),
+          }),
+        ],
+        test: {
+          name: "storybook-svelte",
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: "playwright",
+            instances: [
+              {
+                browser: "chromium",
+              },
+            ],
+          },
+          setupFiles: [".storybook-svelte/vitest.setup.ts"],
         },
       },
     ],
