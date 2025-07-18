@@ -8,12 +8,14 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "check:svelte": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "storybook:react": "storybook dev -p 6006 -c .storybook-react",
     "build-storybook:react": "storybook build -c .storybook-react",
     "storybook:svelte": "storybook dev -p 6007 -c .storybook-svelte",
     "build-storybook:svelte": "storybook build -c .storybook-svelte"
   },
   "dependencies": {
+    "@lucide/svelte": "^0.525.0",
     "@tailwindcss/vite": "^4.1.11",
     "daisyui": "^5.0.46",
     "react": "^19.1.0",
@@ -31,6 +33,7 @@
     "@storybook/react-vite": "^9.0.17",
     "@storybook/svelte-vite": "^9.0.17",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
+    "@tsconfig/svelte": "^5.0.4",
     "@types/node": "^24.0.14",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
