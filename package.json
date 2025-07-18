@@ -12,15 +12,19 @@
     "storybook:react": "storybook dev -p 6006 -c .storybook-react",
     "build-storybook:react": "storybook build -c .storybook-react",
     "storybook:svelte": "storybook dev -p 6007 -c .storybook-svelte",
-    "build-storybook:svelte": "storybook build -c .storybook-svelte"
+    "build-storybook:svelte": "storybook build -c .storybook-svelte",
+    "machine-translate": "inlang machine translate --project project.inlang"
   },
   "dependencies": {
     "@lucide/svelte": "^0.525.0",
     "@tailwindcss/vite": "^4.1.11",
     "daisyui": "^5.0.46",
+    "formsnap": "^2.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "tailwindcss": "^4.1.11"
+    "sveltekit-superforms": "^2.27.1",
+    "tailwindcss": "^4.1.11",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",
@@ -52,6 +56,8 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^6.3.5",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "@inlang/paraglide-js": "2.2.0",
+    "@inlang/cli": "^3.0.0"
   }
 }
