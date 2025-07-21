@@ -2,8 +2,8 @@
   "name": "storybook-svelte",
   "version": "0.0.2",
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build && npm run prepack",
+    "dev": "svelte-kit sync && svelte-package --watch --input=src",
+    "build": "svelte-kit sync && svelte-package --input=src",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "prepack": "svelte-kit sync && svelte-package && publint",
