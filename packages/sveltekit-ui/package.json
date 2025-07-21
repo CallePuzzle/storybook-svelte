@@ -1,6 +1,6 @@
 {
-  "name": "storybook-svelte",
-  "version": "0.0.2",
+  "name": "@repo/sveltekit-ui",
+  "version": "0.0.0",
   "scripts": {
     "dev": "svelte-kit sync && svelte-package --watch --input=src",
     "build": "svelte-kit sync && svelte-package --input=src",
@@ -35,7 +35,7 @@
     "./package.json": "./package.json"
   },
   "peerDependencies": {
-    "svelte": "^5.35.0"
+    "svelte": "^5.36.12"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",
