@@ -77,13 +77,13 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0",
     "vite": "^6.3.5",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "@inlang/paraglide-js": "2.2.0"
   },
   "keywords": [
     "svelte"
   ],
   "dependencies": {
-    "@inlang/paraglide-js": "^2.2.0",
     "@libsql/client": "^0.15.10",
     "@lucide/svelte": "^0.488.0",
     "@prisma/adapter-libsql": "^6.12.0",
