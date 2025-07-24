@@ -1,0 +1,14 @@
+{
+  "name": "@repo/library",
+  "version": "0.0.0",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "tsup src/* --watch",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "better-auth": "^1.3.3"
+  }
+}

@@ -5,7 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".svelte-kit/**", ".vercel/**"]
+      "outputs": [".svelte-kit/**", "dist/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -20,6 +20,25 @@
     "storybook": {
       "cache": false,
       "persistent": true
+    },
+    "db:migrate:dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:migrate:deploy": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
+    },
+    "db:seed": {
+      "cache": false
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "better-auth:generate": {
+      "cache": false
     }
   }
 }
