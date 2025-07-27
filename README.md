@@ -13,9 +13,19 @@ Este monorepo contiene:
 
 Arrancar las demos:
 
+Desde `packages/sveltekit-ui`:
 ```bash
-bun run dev
+bunx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/paraglide
 ```
+
+```bash
+bun run db:generate
+bun run db:migrate:dev
+turso dev --db-file dev.db
+bun run dev:sveltekit
+```
+
+
 
 Arrancar el storybook:
 

@@ -1,12 +1,12 @@
-import { PrismaBetterSQLite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaLibSQL } from "@prisma/adapter-libsql";
 import {
   PrismaClient,
   type PrismaClient as PrismaClientType,
 } from "@prisma/client";
 
-export function GetPrismaClient(url: string): PrismaClientType {
-  const adapter = new PrismaBetterSQLite3({
-    url: url,
+export function GetPrismaClient(): PrismaClientType {
+  const adapter = new PrismaLibSQL({
+    url: "http://127.0.0.1:8080",
   });
   const prisma = new PrismaClient({ adapter });
 

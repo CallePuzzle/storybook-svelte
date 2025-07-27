@@ -4,6 +4,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:sveltekit": "turbo run dev --filter=sveltekit...",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md,svelte,astro}\"",
     "check-types": "turbo run check-types",
