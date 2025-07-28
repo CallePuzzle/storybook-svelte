@@ -1,6 +1,6 @@
 import db from "./db";
 // import sender from './sender';
-import { getBetterAuth } from "@repo/library";
+import { getBetterAuth } from "@repo/library/better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import type { BetterAuthOptions } from "better-auth";
 

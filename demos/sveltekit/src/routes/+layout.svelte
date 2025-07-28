@@ -2,7 +2,7 @@
   import "../app.css";
   import { Header } from "@repo/sveltekit-ui";
   import { routes } from "$lib/routes.js";
-  import { session, authClient } from "$lib/auth-client";
+  import { session, authClient } from "@repo/library/better-auth";
 
   import type { PageData } from "./$types";
   import type { Snippet } from "svelte";
