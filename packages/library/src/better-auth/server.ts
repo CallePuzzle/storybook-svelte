@@ -2,7 +2,9 @@ import { betterAuth } from "better-auth";
 import { magicLink, organization, admin } from "better-auth/plugins";
 import type { BetterAuthOptions } from "better-auth";
 
-export function getBetterAuth(additionalOptions: BetterAuthOptions) {
+export function getBetterAuth(
+  additionalOptions: BetterAuthOptions,
+): ReturnType<typeof betterAuth> {
   const defaultOptions: BetterAuthOptions = {
     plugins: [
       magicLink({

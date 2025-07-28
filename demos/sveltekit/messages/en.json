@@ -1,5 +1,3 @@
 {
-	"routes_org_list": "Organizations list",
-	"routes_org_index": "Organization",
-	"routes_grocery_index": "Products / Food"
+  "routes_admin_index": "Admin"
 }
