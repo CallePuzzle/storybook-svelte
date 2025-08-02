@@ -1,7 +1,7 @@
 <script module>
   import { defineMeta } from "@storybook/addon-svelte-csf";
   import Header from "../components/Header.svelte";
-  import { routes } from "../routes.js";
+  import { routes } from "@repo/library";
 
   // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
   const { Story } = defineMeta({
@@ -44,7 +44,8 @@
   <Header
     title="NavNar Title"
     routes={routesToShow}
-    userIsLogged={true}
+    session={{ data: { user: { id: "1", name: "Test User" } } }}
+    authClient={{}}
     userHasNotification={true}
     notification={true}
     searcher={true}
@@ -59,8 +60,9 @@
   <Header
     title="NavNar Title"
     routes={routesToShow}
-    userIsLogged={true}
-    userHasNotification={true}
+    session={{ data: null }}
+    authClient={{}}
+    userHasNotification={false}
     notification={true}
     searcher={true}
   >

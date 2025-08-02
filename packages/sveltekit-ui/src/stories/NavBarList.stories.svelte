@@ -1,7 +1,7 @@
 <script module>
   import { defineMeta } from "@storybook/addon-svelte-csf";
   import NavBarList from "../components/NavBarList.svelte";
-  import { routes } from "../routes.js";
+  import { routes } from "@repo/library";
 
   const { Story } = defineMeta({
     title: "Component/NavBarList",

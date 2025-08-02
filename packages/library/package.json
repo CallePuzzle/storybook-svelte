@@ -4,16 +4,22 @@
   "type": "module",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "source": "./src/index.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./better-auth": {
       "types": "./dist/better-auth/index.d.ts",
-      "import": "./dist/better-auth/index.js"
-    }
+      "import": "./dist/better-auth/index.js",
+      "require": "./dist/better-auth/index.js",
+      "default": "./dist/better-auth/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
     "dev": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && tsup --watch",
