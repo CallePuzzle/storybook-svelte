@@ -1,6 +1,7 @@
 <script lang="ts">
   import Search from "@lucide/svelte/icons/search";
   import BellRing from "@lucide/svelte/icons/bell-ring";
+  import Globe from "@lucide/svelte/icons/globe";
   import Link from "./Link.svelte";
   import type { Routes } from "@repo/library";
   import Modal from "./Modal.svelte";
@@ -8,6 +9,7 @@
   import FormLogin from "./FormLogin.svelte";
   import type { AuthClient, Session } from "@repo/library/better-auth";
   import type { Props as FormLoginProps } from "./FormLogin.svelte";
+  import { type Locale } from "../utils.js";
 
   export type Props = {
     routes: Routes;
@@ -16,6 +18,8 @@
     userHasNotification?: boolean;
     notification?: boolean;
     searcher?: boolean;
+    locales?: Locale[];
+    setLocale: (locale: Locale) => void;
   } & FormLoginProps;
 
   let {
@@ -25,6 +29,8 @@
     userHasNotification = false,
     notification = false,
     searcher = false,
+    locales = [],
+    setLocale,
   }: Props = $props();
 
   let modal = $state<ModalType | null>(null);
@@ -54,6 +60,28 @@
         {/if}
       </div>
     </a>
+  {/if}
+  {#if locales.length > 1}
+    <button class="btn btn-ghost btn-circle">
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+          <Globe />
+        </div>
+        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-32 p-2 shadow"
+        >
+          {#each locales as locale (locale)}
+            <li>
+              <button class="text-sm" onclick={() => setLocale(locale)}>
+                {locale}
+              </button>
+            </li>
+          {/each}
+        </ul>
+      </div>
+    </button>
   {/if}
 
   <div class="dropdown dropdown-end">

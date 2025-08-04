@@ -24,6 +24,8 @@
     userHasNotification = false,
     notification = false,
     searcher = false,
+    locales = [],
+    setLocale,
   }: Props = $props();
 </script>
 
@@ -52,6 +54,8 @@
         {notification}
         {searcher}
         {routes}
+        {locales}
+        {setLocale}
       />
     </div>
     <!-- Page content here -->
